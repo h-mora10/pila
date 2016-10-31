@@ -102,7 +102,7 @@
 			<div id="content">
 				<section class="style-default-bright">
 					<div class="section-header">
-						<h2 class="text-primary">Actualizar Aportantes</h2>
+						<h2 class="text-primary">Actualizar Pensionado</h2>
 					</div>
 					<div class="section-body">
 
@@ -112,7 +112,83 @@
 								<label for="regular1">Nombre</label>
 							</div>
 							<div class="form-group">
-								<select id="select1" name="tipoPagador" class="form-control">
+								<input type="text" class="form-control" id="edad">
+								<label for="regular1">Edad</label>
+							</div>
+							<div class="form-group">
+								<input type="text" class="form-control" id="salario">
+								<label for="regular1">Salario</label>
+							</div>
+							<div class="form-group">
+								<div class="btn-group" data-toggle="buttons">
+									<br/>
+									<label class="btn ink-reaction btn-primary">
+										<input type="radio" name="esAltoRiesgo" id="esAltoRiesgoSi"><i class="fa fa-check-square-o fa-fw"></i> Si
+									</label>
+									<label class="btn ink-reaction btn-primary active">
+										<input type="radio" name="esAltoRiesgo" id="esAltoRiesgoNo"><i class="fa fa-square-o fa-fw"></i> No
+									</label>
+								</div>
+								<label for="regular1">¿Es alto riesgo?</label>
+							</div>
+							<div class="form-group">
+								<div class="btn-group" data-toggle="buttons">
+									<br/>
+									<label class="btn ink-reaction btn-primary">
+										<input type="radio" name="esCongresista" id="esCongresistaSi"><i class="fa fa-check-square-o fa-fw"></i> Si
+									</label>
+									<label class="btn ink-reaction btn-primary active">
+										<input type="radio" name="esCongresista" id="esCongresistaNo"><i class="fa fa-square-o fa-fw"></i> No
+									</label>
+								</div>
+								<label for="regular1">¿Es congresista?</label>
+							</div>
+							<div class="form-group">
+								<div class="btn-group" data-toggle="buttons">
+									<br/>
+									<label class="btn ink-reaction btn-primary">
+										<input type="radio" name="esTrabajadorCTI" id="esTrabajadorCTISi"><i class="fa fa-check-square-o fa-fw"></i> Si
+									</label>
+									<label class="btn ink-reaction btn-primary active">
+										<input type="radio" name="esTrabajadorCTI" id="esTrabajadorCTINo"><i class="fa fa-square-o fa-fw"></i> No
+									</label>
+								</div>
+								<label for="regular1">¿Es trabajador del CTI?</label>
+							</div>
+							<div class="form-group">
+								<div class="btn-group" data-toggle="buttons">
+									<br/>
+									<label class="btn ink-reaction btn-primary">
+										<input type="radio" name="esAviador" id="esAviadorSi"><i class="fa fa-check-square-o fa-fw"></i> Si
+									</label>
+									<label class="btn ink-reaction btn-primary active">
+										<input type="radio" name="esAviador" id="esAviadorNo"><i class="fa fa-square-o fa-fw"></i> No
+									</label>
+								</div>
+								<label for="regular1">¿Es aviador?</label>
+							</div>
+							<div class="form-group">
+								<input type="text" class="form-control" id="residenciaExterior">
+								<label for="regular1">Dirección de residencia en el exterior</label>
+							</div>
+							<div class="form-group">
+								<div class="btn-group" data-toggle="buttons">
+									<br/>
+									<label class="btn ink-reaction btn-primary">
+										<input type="radio" name="tieneGrupoFamiliarColombia" id="tieneGrupoFamiliarColombiaSi"><i class="fa fa-check-square-o fa-fw"></i> Si
+									</label>
+									<label class="btn ink-reaction btn-primary active">
+										<input type="radio" name="tieneGrupoFamiliarColombia" id="tieneGrupoFamiliarColombiaNo"><i class="fa fa-square-o fa-fw"></i> No
+									</label>
+								</div>
+								<label for="regular1">¿Tiene grupo familiar en Colombia?</label>
+							</div>
+							<div class="form-group">
+								<input type="text" class="form-control" id="codigoCIU">
+								<label for="regular1">Código CIU</label>
+							</div>
+							<div class="form-group">
+								<select id="select1" name="tipoPensionado" class="form-control">
 									<option value="">&nbsp;</option>
 									<option value="30">30</option>
 									<option value="40">40</option>
@@ -120,10 +196,10 @@
 									<option value="60">60</option>
 									<option value="70">70</option>
 								</select>
-								<label for="select1">Tipo Pagador</label>
+								<label for="select1">Tipo de pensionado</label>
 							</div>
 							<div class="form-group">
-								<button type="submit" class="btn btn-raised btn-default-light ink-reaction">Crear</button>
+								<button type="submit" class="btn btn-raised btn-default-light ink-reaction">Actualizar</button>
 							</div>
 						</form>
 
@@ -159,21 +235,45 @@
 						</li><!--end /menu-li -->
 						<!-- END INICIO -->
 
-						<!-- BEGIN APORTANTES -->
+						<!-- BEGIN PENSIONADOS -->
 						<li class="gui-folder">
 							<a>
 								<div class="gui-icon"><i class="glyphicon glyphicon-list-alt"></i></div>
-								<span class="title">Aportantes</span>
+								<span class="title">Pensionados</span>
 							</a>
 							<!--start submenu -->
 							<ul>
 								<li><a href="consultar-pensionado.html" ><span class="title">Consultar</span></a></li>
 								<li><a href="crear-pensionado.html" ><span class="title">Crear</span></a></li>
-								<li><a href="../../html/mail/reply.html" ><span class="title">Editar</span></a></li>
-								<li><a href="../../html/mail/message.html" ><span class="title">Eliminar</span></a></li>
 							</ul><!--end /submenu -->
 						</li><!--end /menu-li -->
-						<!-- END APORTANTES -->
+						<!-- END PENSIONADOS -->
+
+						<!-- BEGIN PENSIONADOS -->
+						<li class="gui-folder">
+							<a>
+								<div class="gui-icon"><i class="glyphicon glyphicon-list-alt"></i></div>
+								<span class="title">Novedades</span>
+							</a>
+							<!--start submenu -->
+							<ul>
+								<li><a href="consultar-novedades.html" ><span class="title">Consultar</span></a></li>
+							</ul><!--end /submenu -->
+						</li><!--end /menu-li -->
+						<!-- END PENSIONADOS -->
+
+						<!-- BEGIN SERVICIOS -->
+						<li class="gui-folder">
+							<a>
+								<div class="gui-icon"><i class="glyphicon glyphicon-list-alt"></i></div>
+								<span class="title">Pagar Servicios</span>
+							</a>
+							<!--start submenu -->
+							<ul>
+								<li><a href="pagar-servicios.html" ><span class="title">Pagar</span></a></li>
+							</ul><!--end /submenu -->
+						</li><!--end /menu-li -->
+						<!-- END SERVICIOS -->
 
 					</ul><!--end .main-menu -->
 					<!-- END MAIN MENU -->

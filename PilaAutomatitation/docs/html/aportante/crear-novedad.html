@@ -102,31 +102,38 @@
 			<div id="content">
 				<section class="style-default-bright">
 					<div class="section-header">
-						<h2 class="text-primary">Consultar Pensionados</h2>
+						<h2 class="text-primary">Crear Novedad</h2>
 					</div>
 					<div class="section-body">
 
-						<hr class="ruler-xxl"/>
-
-						<!-- BEGIN DATATABLE 2 -->
-						<div class="row">
-							<div class="col-lg-12">
-								<div class="table-responsive">
-									<table id="datatable2" class="table order-column hover" data-source="data/pensionados.json" data-swftools="../../assets/js/libs/DataTables/extensions/TableTools/swf/copy_csv_xls_pdf.swf">
-										<thead>
-											<tr>
-												<th></th>
-												<th>Id</th>
-												<th>Nombre</th>
-												<th>Edad</th>
-												<th>Código CIU</th>
-											</tr>
-										</thead>
-									</table>
-								</div><!--end .table-responsive -->
-							</div><!--end .col -->
-						</div><!--end .row -->
-						<!-- END DATATABLE 2 -->
+						<form class="form">
+							<div class="form-group">
+								<input type="date" class="form-control" id="fechaInicio">
+								<label for="regular1">Fecha de inicio</label>
+							</div>
+							<div class="form-group">
+								<input type="date" class="form-control" id="fechaFin">
+								<label for="regular1">Fecha de finalización</label>
+							</div>
+							<div class="form-group">
+								<input type="number" class="form-control" id="duracion">
+								<label for="regular1">Duracion en días</label>
+							</div>
+							<div class="form-group">
+								<select id="select1" name="tipo" class="form-control">
+									<option value="">&nbsp;</option>
+									<option value="30">30</option>
+									<option value="40">40</option>
+									<option value="50">50</option>
+									<option value="60">60</option>
+									<option value="70">70</option>
+								</select>
+								<label for="select1">Tipo de novedad</label>
+							</div>
+							<div class="form-group">
+								<button type="submit" class="btn btn-raised btn-default-light ink-reaction">Crear</button>
+							</div>
+						</form>
 
 					</div><!--end .section-body -->
 				</section>
@@ -200,7 +207,6 @@
 						</li><!--end /menu-li -->
 						<!-- END SERVICIOS -->
 
-
 					</ul><!--end .main-menu -->
 					<!-- END MAIN MENU -->
 
@@ -253,7 +259,7 @@
 		<script src="../../assets/js/core/source/AppNavSearch.js"></script>
 		<script src="../../assets/js/core/source/AppVendor.js"></script>
 		<script src="../../assets/js/core/demo/Demo.js"></script>
-		<script src="../../assets/js/core/demo/PensionadosTableDynamic.js"></script>
+		<script src="../../assets/js/core/demo/DemoTableDynamic.js"></script>
 
 		<script src="../../assets/js/app/util/config.js"></script>
 		<script src="../../assets/js/app/util/loader.js"></script>
