@@ -115,16 +115,8 @@
 		// `d` is the original data object for the row
 		return '<table cellpadding="5" cellspacing="0" border="0" style="padding-left:50px;">' +
 				'<tr>' +
-				'<td>Aporte de Seguridad Social:</td>' +
-				'<td><a href="#" onclick="acualizar()" style="font-weight: bold; color: #7eb73d;">Pagar</a></td>' +
-				'</tr>' +
-				'<tr>' +
-				'<td>Aporte de Pensiones:</td>' +
-				'<td><a href="#" onclick="acualizar()" style="font-weight: bold; color: #7eb73d;">Pagar</a></td>' +
-				'</tr>' +
-				'<tr>' +
-				'<td>Aporte de Riesgos Laborales:</td>' +
-				'<td><a href="#" onclick="acualizar()" style="font-weight: bold; color: #7eb73d;">Pagar</a></td>' +
+				'<td>Pagar Aportes:</td>' +
+				'<td><a href="pagar-salud.html?id=' + d.id + '" style="font-weight: bold; color: #7eb73d;">Pagar</a></td>' +
 				'</tr>' +
 				'</table>';
 	};
