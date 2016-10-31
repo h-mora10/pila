@@ -116,7 +116,7 @@
 		return '<table cellpadding="5" cellspacing="0" border="0" style="padding-left:50px;">' +
 				'<tr>' +
 				'<td>Pagar Aportes:</td>' +
-				'<td><a href="pagar-salud.html?id=' + d.id + '" style="font-weight: bold; color: #7eb73d;">Pagar</a></td>' +
+				'<td><a href="pagar.html?id=' + d.id + '" style="font-weight: bold; color: #7eb73d;">Pagar</a></td>' +
 				'</tr>' +
 				'</table>';
 	};
