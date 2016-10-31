@@ -27,7 +27,7 @@
 		<script type="text/javascript" src="../../assets/js/libs/utils/respond.min.js?1403934956"></script>
 		<![endif]-->
 	</head>
-	<body class="menubar-hoverable header-fixed ">
+	<body class="menubar-hoverable header-fixed" onload="isContributorAuthenticated()">
 
 		<!-- BEGIN HEADER-->
 		<header id="header" >
@@ -66,15 +66,12 @@
 						<li class="dropdown">
 							<a href="javascript:void(0);" class="dropdown-toggle ink-reaction" data-toggle="dropdown">
 								<img src="../../assets/img/avatar1.jpg?1403934956" alt="" />
-								<span class="profile-info">
-									Daniel Johnson
-									<small>Administrator</small>
-								</span>
+								<span id="labelUsername" class="profile-info"></span>
 							</a>
 							<ul class="dropdown-menu animation-dock">
 								<li><a href="../../html/pages/profile.html">Mi Perfil</a></li>
 								<li class="divider"></li>
-								<li><a href="../../html/pages/login.html"><i class="fa fa-fw fa-power-off text-danger"></i> Salir</a></li>
+								<li><a href="#" onclick="logoutPila()"><i class="fa fa-fw fa-power-off text-danger"></i> Salir</a></li>
 							</ul><!--end .dropdown-menu -->
 						</li><!--end .dropdown -->
 					</ul><!--end .header-nav-profile -->
@@ -153,7 +150,7 @@
 
 						<!-- BEGIN INICIO -->
 						<li>
-							<a href="../../index.html" >
+							<a href="consultar-pensionado.html" >
 								<div class="gui-icon"><i class="md md-home"></i></div>
 								<span class="title">Inicio</span>
 							</a>
@@ -163,7 +160,7 @@
 						<!-- BEGIN PENSIONADOS -->
 						<li class="gui-folder">
 							<a>
-								<div class="gui-icon"><i class="glyphicon glyphicon-list-alt"></i></div>
+								<div class="gui-icon"><i class="glyphicon glyphicon-user"></i></div>
 								<span class="title">Pensionados</span>
 							</a>
 							<!--start submenu -->
@@ -177,7 +174,7 @@
 						<!-- BEGIN PENSIONADOS -->
 						<li class="gui-folder">
 							<a>
-								<div class="gui-icon"><i class="glyphicon glyphicon-list-alt"></i></div>
+								<div class="gui-icon"><i class="glyphicon glyphicon-refresh"></i></div>
 								<span class="title">Novedades</span>
 							</a>
 							<!--start submenu -->
@@ -190,8 +187,8 @@
 						<!-- BEGIN SERVICIOS -->
 						<li class="gui-folder">
 							<a>
-								<div class="gui-icon"><i class="glyphicon glyphicon-list-alt"></i></div>
-								<span class="title">Pagar Servicios</span>
+								<div class="gui-icon"><i class="glyphicon glyphicon-credit-card"></i></div>
+								<span class="title">Servicios</span>
 							</a>
 							<!--start submenu -->
 							<ul>
@@ -260,6 +257,7 @@
 		<script src="../../assets/js/app/util/service.js"></script>
 		<script src="../../assets/js/app/util/util.js"></script>
 		<script src="../../assets/js/app/services/index.js"></script>
+		<script src="../../assets/js/app/services/login.js"></script>
 		<!-- END JAVASCRIPT -->
 
 	</body>
