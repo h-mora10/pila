@@ -41,7 +41,7 @@ def crear_aportante(request):
 
 
 @csrf_exempt
-def actualizar_aportante(request, id):
+def actualizar_eliminar_aportante(request, id):
     try:
         if request.method == 'PUT':
             data = json.loads(request.body)
@@ -62,16 +62,11 @@ def actualizar_aportante(request, id):
             aportante.save()
 
             return HttpResponse(serializers.serialize("json", [aportante]))
-    except:
-        return JsonResponse({"mensaje": "Ocurrió un error actualizando el aportante " + str(id)})
-
-
-@csrf_exempt
-def eliminar_aportante(request, id):
-    try:
-        if request.method == 'DELETE':
+        elif request.method == 'DELETE':
             aportante = Aportante.objects.get(pk=id)
+            usuario = User.objects.get(pk=aportante.usuario_id.id)
+            usuario.delete()
             aportante.delete()
             return JsonResponse({"mensaje": "ok"})
     except:
-        return JsonResponse({"mensaje": "Ocurrió un error eliminando el aportante " + str(id)})
+        return JsonResponse({"mensaje": "Ocurrió un error actualizando/eliminando el aportante " + str(id)})
