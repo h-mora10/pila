@@ -37,8 +37,9 @@ def crear_consultar_aportante(request):
 
             return HttpResponse(serializers.serialize("json", [aportante]))
         elif request.method == 'GET':
-            aportantes = Aportante.objects.all()
-            return HttpResponse(serializers.serialize("json", aportantes))
+            aportantes = Aportante.objects.all().values('pk', 'usuario_id', 'nombre', 'tipo_pagador_pensiones', 'operador_servicio')
+            aportantes = json.loads(json.dumps(list(aportantes)))
+            return JsonResponse(aportantes, safe=False)
     except:
         return JsonResponse({"mensaje": "Ocurrió un error creando el aportante"})
 
