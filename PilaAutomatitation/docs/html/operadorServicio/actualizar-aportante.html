@@ -102,34 +102,32 @@
 						<h2 class="text-primary">Actualizar Aportante</h2>
 					</div>
 					<div class="section-body">
+						<h3 id="message" class="text-primary"></h3>
 
-						<form class="form">
-							<div class="form-group">
-								<input type="text" class="form-control" id="nombre" name="nombre">
-								<label for="regular1">Nombre</label>
-							</div>
-							<div class="form-group">
-								<input type="text" class="form-control" id="usuario" name="usuario" readonly>
-								<label for="regular1">Usuario</label>
-							</div>
-							<div class="form-group">
-								<input type="password" class="form-control" id="password" name="password">
-								<label for="regular1">Contraseña</label>
-							</div>
-							<div class="form-group">
-								<select id="select1" name="tipoPagador" class="form-control">
-									<option value="1">Empleador</option>
-									<option value="2">Administrador de Pensiones</option>
-									<option value="3">Pagador de pensiones</option>
-									<option value="4">Pensiones de entidades de los regimenes especial y de excepción</option>
-								</select>
-								<label for="tipoPagador">Tipo Pagador</label>
-							</div>
-							<div class="form-group">
-								<button type="submit" class="btn btn-raised btn-default-light ink-reaction">Actualizar</button>
-							</div>
-						</form>
-
+						<div class="form-group">
+							<input type="text" class="form-control" id="nombre" name="nombre">
+							<label for="regular1">Nombre</label>
+						</div>
+						<div class="form-group">
+							<input type="text" class="form-control" id="usuario" name="usuario" readonly>
+							<label for="regular1">Usuario</label>
+						</div>
+						<div class="form-group">
+							<input type="password" class="form-control" id="password" name="password">
+							<label for="regular1">Contraseña</label>
+						</div>
+						<div class="form-group">
+							<select id="select1" name="tipoPagador" class="form-control">
+								<option value="1">Empleador</option>
+								<option value="2">Administrador de Pensiones</option>
+								<option value="3">Pagador de pensiones</option>
+								<option value="4">Pensiones de entidades de los regimenes especial y de excepción</option>
+							</select>
+							<label for="tipoPagador">Tipo Pagador</label>
+						</div>
+						<div class="form-group">
+							<button type="submit" class="btn btn-raised btn-default-light ink-reaction" onclick="actualizarAportante()">Actualizar</button>
+						</div>
 					</div><!--end .section-body -->
 				</section>
 			</div><!--end #content-->
@@ -235,6 +233,7 @@
 		<script src="../../assets/js/app/util/util.js"></script>
 		<script src="../../assets/js/app/services/index.js"></script>
 		<script src="../../assets/js/app/services/login.js"></script>
+		<script src="../../assets/js/app/services/aportante.js"></script>
 		<!-- END JAVASCRIPT -->
 
 	</body>

@@ -2783,7 +2783,7 @@ textarea.autosize {
   transition: 0.2s ease all;
 }
 .form-group .form-control ~ label {
-  top: 0;
+  top: -19px;
   margin-bottom: 0;
   font-size: 12px;
   opacity: 0.5;

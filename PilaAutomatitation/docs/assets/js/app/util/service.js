@@ -57,6 +57,25 @@ function PUT(uri, data, callbackResponse, callbackError){
     });
 };
 
+function DELETE(uri, callbackResponse, callbackError) {
+    $.ajax({
+        type: 'DELETE',
+        url: URL_HOME + uri,
+        dataType: 'json',
+        headers: getToken(),
+        success: function (response) {
+            if (callbackResponse){
+                callbackResponse(response);
+            }
+        },
+        fail: function (error) {
+            if (callbackError){
+                callbackError(error);
+            }
+        }
+    });
+}
+
 function getToken() {
     var token = {"Content-Type" : "application/json"};
     var user = localStorage.getItem('user');
