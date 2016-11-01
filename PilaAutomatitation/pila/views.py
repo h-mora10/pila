@@ -2,6 +2,7 @@
 import json
 import traceback
 
+from django.contrib.auth import authenticate, login
 from django.contrib.auth.models import User
 from django.core import serializers
 from django.http import HttpResponse
@@ -12,6 +13,28 @@ from .models import OperadorServicio, Aportante
 
 
 # Create your views here.
+@csrf_exempt
+def pila_login(request):
+    try:
+        if request.method == 'POST':
+            data = json.loads(request.body)
+
+            nombre_usuario = data['usuario']
+            contrasenia = data['password']
+
+            usuario = authenticate(username=nombre_usuario, password=contrasenia)
+
+            if usuario is not None:
+                login(request, usuario)
+
+                return HttpResponse(serializers.serialize("json", [usuario]))
+            else:
+                return JsonResponse({"mensaje": "Ocurrió un error al intentar hacer login"})
+    except:
+        traceback.print_exc()
+        return JsonResponse({"mensaje": "Ocurrió un error al intentar hacer login"})
+
+
 @csrf_exempt
 def crear_consultar_aportante(request):
     try:
@@ -43,6 +66,7 @@ def crear_consultar_aportante(request):
                 aportante['tipo_pagador_pensiones_nombre'] = a.get_tipo_pagador_pensiones_display()
 
             aportantes = json.loads(json.dumps(list(aportantes)))
+
             return JsonResponse(aportantes, safe=False)
     except:
         traceback.print_exc()
@@ -75,7 +99,12 @@ def actualizar_eliminar_aportante(request, id):
             usuario = User.objects.get(pk=aportante.usuario_id.id)
             usuario.delete()
             aportante.delete()
+
             return JsonResponse({"mensaje": "ok"})
+        elif request.method == 'GET':
+            aportante = Aportante.objects.get(pk=id)
+
+            return HttpResponse(serializers.serialize("json", [aportante]))
     except:
         traceback.print_exc()
         return JsonResponse({"mensaje": "Ocurrió un error actualizando/eliminando el aportante " + str(id)})
