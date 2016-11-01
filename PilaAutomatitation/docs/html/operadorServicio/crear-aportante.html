@@ -102,34 +102,31 @@
 						<h2 class="text-primary">Crear Aportante</h2>
 					</div>
 					<div class="section-body">
-
-						<form class="form">
-							<div class="form-group">
-								<input type="text" class="form-control" id="nombre">
-								<label for="regular1">Nombre</label>
-							</div>
-							<div class="form-group">
-								<input type="text" class="form-control" id="usuario">
-								<label for="regular1">Usuario</label>
-							</div>
-							<div class="form-group">
-								<input type="password" class="form-control" id="password">
-								<label for="regular1">Contraseña</label>
-							</div>
-							<div class="form-group">
-								<select id="select1" name="tipoPagador" class="form-control">
-									<option value="30">30</option>
-									<option value="40">40</option>
-									<option value="50">50</option>
-									<option value="60">60</option>
-									<option value="70">70</option>
-								</select>
-								<label for="tipoPagador">Tipo Pagador</label>
-							</div>
-							<div class="form-group">
-								<button type="submit" class="btn btn-raised btn-default-light ink-reaction">Crear</button>
-							</div>
-						</form>
+						<h3 id="message" class="text-primary"></h3>
+						<div class="form-group">
+							<input type="text" class="form-control" id="nombre" required>
+							<label for="regular1">Nombre</label>
+						</div>
+						<div class="form-group">
+							<input type="text" class="form-control" id="usuario" required>
+							<label for="regular1">Usuario</label>
+						</div>
+						<div class="form-group">
+							<input type="password" class="form-control" id="password" required>
+							<label for="regular1">Contraseña</label>
+						</div>
+						<div class="form-group">
+							<select id="tipoPagador" name="tipoPagador" class="form-control">
+								<option value="1">Empleador</option>
+								<option value="2">Administrador de Pensiones</option>
+								<option value="3">Pagador de pensiones</option>
+								<option value="4">Pensiones de entidades de los regimenes especial y de excepción</option>
+							</select>
+							<label for="tipoPagador">Tipo Pagador</label>
+						</div>
+						<div class="form-group">
+							<button type="submit" class="btn btn-raised btn-default-light ink-reaction" onclick="crearAportante()">Crear</button>
+						</div>
 
 					</div><!--end .section-body -->
 				</section>
@@ -229,7 +226,6 @@
 		<script src="../../assets/js/core/source/AppNavSearch.js"></script>
 		<script src="../../assets/js/core/source/AppVendor.js"></script>
 		<script src="../../assets/js/core/demo/Demo.js"></script>
-		<script src="../../assets/js/core/demo/DemoTableDynamic.js"></script>
 
 		<script src="../../assets/js/app/util/config.js"></script>
 		<script src="../../assets/js/app/util/loader.js"></script>
@@ -237,6 +233,7 @@
 		<script src="../../assets/js/app/util/util.js"></script>
 		<script src="../../assets/js/app/services/index.js"></script>
 		<script src="../../assets/js/app/services/login.js"></script>
+		<script src="../../assets/js/app/services/aportante.js"></script>
 		<!-- END JAVASCRIPT -->
 
 	</body>

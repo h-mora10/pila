@@ -1,4 +1,4 @@
-var URL_HOME = 'https://sonidoslibres.herokuapp.com';
+var URL_HOME = 'http://localhost:8000/pila';
 var USER = undefined;
 var OPERATOR = "operator";
 var CONTRIBUTOR = "contributor";
