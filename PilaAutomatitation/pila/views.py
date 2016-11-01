@@ -15,7 +15,7 @@ from .models import OperadorServicio, Aportante
 @csrf_exempt
 def crear_aportante(request):
     if request.method == 'POST':
-        data = json.load(request.body)
+        data = json.loads(request.body)
 
         nombre_usuario = data['usuario']
         contrasenia = data['password']
@@ -30,6 +30,29 @@ def crear_aportante(request):
         aportante.nombre = nombre
         aportante.tipo_pagador_pensiones = tipo_pagador_pensiones
         aportante.operador_servicio = operador_servicio
+        aportante.save()
+
+        return HttpResponse(serializers.serialize("json", [aportante]))
+
+
+@csrf_exempt
+def actualizar_aportante(request, id):
+    if request.method == 'PUT':
+        data = json.loads(request.body)
+
+        aportante = Aportante.objects.get(pk=id)
+        usuario = User.objects.get(pk=aportante.usuario_id.id)
+
+        nombre_usuario = data['usuario']
+        contrasenia = data['password']
+        nombre = data['nombre']
+        tipo_pagador_pensiones = data['tipoPagador']
+
+        usuario.password = contrasenia
+        usuario.save()
+
+        aportante.nombre = nombre
+        aportante.tipo_pagador_pensiones = tipo_pagador_pensiones
         aportante.save()
 
         return HttpResponse(serializers.serialize("json", [aportante]))
