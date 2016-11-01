@@ -61,7 +61,10 @@
 	p._createDataTable2 = function() {
 		var table = $('#datatable2').DataTable({
 			"dom": 'T<"clear">lfrtip',
-			"ajax": $('#datatable2').data('source'),
+			"ajax": {
+				url: URL_HOME + '/aportantes/',
+				dataSrc: ''
+			},
 			"columns": [
 				{
 					"class": 'details-control',
@@ -69,9 +72,9 @@
 					"data": null,
 					"defaultContent": ''
 				},
-				{"data": "id"},
+				{"data": "pk"},
 				{"data": "nombre"},
-				{"data": "tipoPagador"}
+				{"data": "tipo_pagador_pensiones"}
 			],
 			"tableTools": {
 				"sSwfPath": $('#datatable2').data('swftools')
@@ -86,7 +89,7 @@
 				}
 			}
 		});
-		
+
 		//Add event listener for opening and closing details
 		var o = this;
 		$('#datatable2 tbody').on('click', 'td.details-control', function() {
@@ -119,11 +122,11 @@
 				'</tr>' +
 				'<tr>' +
 				'<td>Tipo Pagador:</td>' +
-				'<td>' + d.tipoPagador + '</td>' +
+				'<td>' + d.tipo_pagador_pensiones + '</td>' +
 				'</tr>' +
 				'<tr>' +
 				'<td>Acciones:</td>' +
-				'<td><a href="actualizar-aportante.html?id=' + d.id + '" style="font-weight: bold; color: #7eb73d;">Actualizar</a>  <a href="#" onclick="eliminarAportante(' + d.id + ')" style="font-weight: bold; color: #6c0020;">Eliminar</a></td>' +
+				'<td><a href="actualizar-aportante.html?id=' + d.pk + '" style="font-weight: bold; color: #7eb73d;">Actualizar</a>  <a href="#" onclick="eliminarAportante(' + d.pk + ')" style="font-weight: bold; color: #6c0020;">Eliminar</a></td>' +
 				'</tr>' +
 				'</table>';
 	};
