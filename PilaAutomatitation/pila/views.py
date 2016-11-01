@@ -15,7 +15,7 @@ from .models import OperadorServicio, Aportante
 
 
 @csrf_exempt
-def crear_aportante(request):
+def crear_consultar_aportante(request):
     try:
         if request.method == 'POST':
             data = json.loads(request.body)
@@ -36,6 +36,9 @@ def crear_aportante(request):
             aportante.save()
 
             return HttpResponse(serializers.serialize("json", [aportante]))
+        elif request.method == 'GET':
+            aportantes = Aportante.objects.all()
+            return HttpResponse(serializers.serialize("json", aportantes))
     except:
         return JsonResponse({"mensaje": "Ocurrió un error creando el aportante"})
 
