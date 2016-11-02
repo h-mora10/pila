@@ -86,15 +86,16 @@ def actualizar_eliminar_aportante(request, id):
             aportante = Aportante.objects.get(pk=id)
             usuario = User.objects.get(pk=aportante.usuario_id.id)
 
-            contrasenia = data['password']
-            nombre = data['nombre']
-            tipo_pagador_pensiones = data['tipoPagador']
+            if data['password']:
+                usuario.set_password(data['password'])
+                usuario.save()
 
-            usuario.password = contrasenia
-            usuario.save()
+            if data['nombre']:
+                aportante.nombre = data['nombre']
 
-            aportante.nombre = nombre
-            aportante.tipo_pagador_pensiones = tipo_pagador_pensiones
+            if data['tipoPagador']:
+                aportante.tipo_pagador_pensiones = data['tipoPagador']
+
             aportante.save()
 
             return HttpResponse(serializers.serialize("json", [aportante]))
