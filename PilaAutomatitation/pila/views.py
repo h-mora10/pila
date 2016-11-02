@@ -3,7 +3,7 @@ import json
 import traceback
 
 from django.contrib.auth import authenticate, login
-from django.contrib.auth.models import User
+from django.contrib.auth.models import User, Group
 from django.core import serializers
 from django.http import HttpResponse
 from django.http import JsonResponse
@@ -26,6 +26,7 @@ def pila_login(request):
 
             if usuario is not None:
                 login(request, usuario)
+                print usuario
 
                 return HttpResponse(serializers.serialize("json", [usuario]))
             else:
@@ -47,6 +48,9 @@ def crear_consultar_aportante(request):
             tipo_pagador_pensiones = data['tipoPagador']
 
             usuario = User.objects.create_user(username=nombre_usuario, password=contrasenia)
+            grupo = Group.objects.get(name__iexact="APORTANTE")
+            grupo.user_set.add(usuario)
+
             operador_servicio = OperadorServicio.objects.get(pk=1)
 
             aportante = Aportante()
@@ -103,8 +107,17 @@ def actualizar_eliminar_aportante(request, id):
             return JsonResponse({"mensaje": "ok"})
         elif request.method == 'GET':
             aportante = Aportante.objects.get(pk=id)
+            respuesta = {
+                'pk': aportante.pk,
+                'usuario_id': aportante.usuario_id.id,
+                'usuario': aportante.usuario_id.username,
+                'nombre': aportante.nombre,
+                'tipo_pagador_pensiones': aportante.tipo_pagador_pensiones,
+                'operador_servicio': aportante.operador_servicio.id,
+                'tipo_pagador_pensiones_nombre': aportante.get_tipo_pagador_pensiones_display()
+            }
 
-            return HttpResponse(serializers.serialize("json", [aportante]))
+            return JsonResponse(respuesta, safe=False)
     except:
         traceback.print_exc()
         return JsonResponse({"mensaje": "Ocurrió un error actualizando/eliminando el aportante " + str(id)})
