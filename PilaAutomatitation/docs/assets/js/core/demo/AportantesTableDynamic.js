@@ -74,7 +74,7 @@
 				},
 				{"data": "pk"},
 				{"data": "nombre"},
-				{"data": "tipo_pagador_pensiones"}
+				{"data": "tipo_pagador_pensiones_nombre"}
 			],
 			"tableTools": {
 				"sSwfPath": $('#datatable2').data('swftools')

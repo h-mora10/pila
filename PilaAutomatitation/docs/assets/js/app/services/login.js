@@ -1,17 +1,33 @@
 function loginPila() {
-    var username = $('#username').val();
-    var password = $('#password').val();
+    var data = {
+        usuario : $('#username').val(),
+        password : $('#password').val()
+    };
 
-    if (username == 'admin' && password == 'admin'){
-        USER = {name:"admin", username: "admin", token: "123456", tipo: OPERATOR};
-        sessionStorage.setItem('user', JSON.stringify(USER));
-        window.location.href = "html/operadorServicio/consultar-aportante.html";
-    }
-    else if (username == 'aportante' && password == 'aportante'){
-        USER = {name:"aportante", username: "aportante", token: "123456", tipo: CONTRIBUTOR};
-        sessionStorage.setItem('user', JSON.stringify(USER));
-        window.location.href = "html/aportante/consultar-pensionado.html";
-    }
+    POST('/login/', JSON.stringify(data), function (response) {
+        if (response && response.mensaje){
+            $('#errorMessage').html(response.mensaje);
+        }
+        else{
+            $('#errorMessage').html('');
+
+            USER = response[0];
+            sessionStorage.setItem('user', JSON.stringify(USER));
+
+            if ($.inArray(1, USER.fields.groups) == 0){
+                window.location.href = "html/aportante/consultar-pensionado.html";
+            }
+            else if ($.inArray(2, USER.fields.groups) == 0){
+                window.location.href = "html/operadorServicio/consultar-aportante.html";
+            }
+            else if ($.inArray(3, USER.fields.groups) == 0){
+                window.location.href = "html/operadorServicio/consultar-aportante.html";
+            }
+            else{
+                window.location.href = "html/aportante/consultar-pensionado.html";
+            }
+        }
+    });
 }
 
 function logoutPila() {

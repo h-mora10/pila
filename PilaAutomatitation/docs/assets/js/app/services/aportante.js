@@ -1,12 +1,3 @@
-function getAportante() {
-    var id = getUrlParameter(id);
-
-    GET('/aportantes/' + id, function (response) {
-        $('#nombre').val(response.nombre);
-        $('#tipoPagador option:selected').val(response.tipo_pagador_pensiones);
-    });
-}
-
 function crearAportante() {
     var data = {
         nombre: $('#nombre').val(),
@@ -26,12 +17,16 @@ function crearAportante() {
 }
 
 function actualizarAportante() {
-    var id = getUrlParameter(id);
+    var id = getUrlParameter('id');
     var data = {
         nombre: $('#nombre').val(),
-        usuario: $('#usuario').val(),
-        password: $('#password').val(),
-        tipoPagador: parseInt($('#tipoPagador option:selected').val())
+        tipoPagador: parseInt($('#tipoPagador option:selected').val()),
+        password: ""
+    }
+
+    var password = $('#password').val();
+    if(password && password !== ""){
+        data.password = password;
     }
 
     PUT('/aportantes/' + id, JSON.stringify(data), function (response) {
