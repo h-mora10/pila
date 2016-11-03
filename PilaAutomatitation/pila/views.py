@@ -9,7 +9,7 @@ from django.http import HttpResponse
 from django.http import JsonResponse
 from django.views.decorators.csrf import csrf_exempt
 
-from .models import OperadorServicio, Aportante
+from .models import OperadorServicio, Aportante, Pensionado
 
 
 # Create your views here.
@@ -102,8 +102,8 @@ def actualizar_eliminar_aportante(request, id):
         elif request.method == 'DELETE':
             aportante = Aportante.objects.get(pk=id)
             usuario = User.objects.get(pk=aportante.usuario_id.id)
-            usuario.delete()
             aportante.delete()
+            usuario.delete()
 
             return JsonResponse({"mensaje": "ok"})
         elif request.method == 'GET':
@@ -122,3 +122,106 @@ def actualizar_eliminar_aportante(request, id):
     except:
         traceback.print_exc()
         return JsonResponse({"mensaje": "Ocurrió un error actualizando/eliminando el aportante " + str(id)})
+
+
+@csrf_exempt
+def crear_consultar_pensionado(request):
+    try:
+        if request.method == 'POST':
+            data = json.loads(request.body)
+
+            aportante = Aportante.objects.get(pk=data['aportante'])
+
+            pensionado = Pensionado()
+            pensionado.nombre = data['nombre']
+            pensionado.edad = data['edad']
+            pensionado.salario = data['salario']
+            pensionado.es_alto_riesgo = data['esAltoRiesgo']
+            pensionado.es_congresista = data['esCongresista']
+            pensionado.es_trabajador_CTI = data['esTrabajadorCTI']
+            pensionado.es_aviador = data['esAviador']
+            pensionado.residencia_exterior = data['residenciaExterior']
+            pensionado.tiene_grupo_familiar_colombia = data['tieneGrupoFamiliarColombia']
+            pensionado.codigo_CIU = data['codigoCIU']
+            pensionado.tipo_pensionado = data['tipoPensionado']
+            pensionado.aportante = aportante
+            pensionado.save()
+
+            return HttpResponse(serializers.serialize("json", [pensionado]))
+    except:
+        traceback.print_exc()
+        return JsonResponse({"mensaje": "Ocurrió un error creando el pensionado"})
+
+
+@csrf_exempt
+def actualizar_eliminar_pensionado(request, id):
+    try:
+        if request.method == 'PUT':
+            data = json.loads(request.body)
+
+            pensionado = Pensionado.objects.get(pk=id)
+
+            if data['nombre']:
+                pensionado.nombre = data['nombre']
+
+            if data['edad']:
+                pensionado.edad = data['edad']
+
+            if data['salario']:
+                pensionado.salario = data['salario']
+
+            if data['esAltoRiesgo']:
+                pensionado.es_alto_riesgo = data['esAltoRiesgo']
+
+            if data['esCongresista']:
+                pensionado.es_congresista = data['esCongresista']
+
+            if data['esTrabajadorCTI']:
+                pensionado.es_trabajador_CTI = data['esTrabajadorCTI']
+
+            if data['esAviador']:
+                pensionado.es_aviador = data['esAviador']
+
+            if data['residenciaExterior']:
+                pensionado.residencia_exterior = data['residenciaExterior']
+
+            if data['tieneGrupoFamiliarColombia']:
+                pensionado.tiene_grupo_familiar_colombia = data['tieneGrupoFamiliarColombia']
+
+            if data['codigoCIU']:
+                pensionado.codigo_CIU = data['codigoCIU']
+
+            if data['tipoPensionado']:
+                pensionado.tipo_pensionado = data['tipoPensionado']
+
+            pensionado.save()
+
+            return HttpResponse(serializers.serialize("json", [pensionado]))
+        elif request.method == 'DELETE':
+            pensionado = Pensionado.objects.get(pk=id)
+
+            pensionado.delete()
+
+            return JsonResponse({"mensaje": "ok"})
+        elif request.method == 'GET':
+            pensionado = Pensionado.objects.get(pk=id)
+            respuesta = {
+                'nombre': pensionado.nombre,
+                'edad': pensionado.edad,
+                'salario': pensionado.salario,
+                'es_alto_riesgo': pensionado.es_alto_riesgo,
+                'es_congresista': pensionado.es_congresista,
+                'es_trabajador_CTI': pensionado.es_trabajador_CTI,
+                'es_aviador': pensionado.es_aviador,
+                'residencia_exterior': pensionado.residencia_exterior,
+                'tiene_grupo_familiar_colombia': pensionado.tiene_grupo_familiar_colombia,
+                'codigo_CIU': pensionado.codigo_CIU,
+                'tipo_pensionado': pensionado.tipo_pensionado,
+                'tipo_pensionado_nombre': pensionado.get_tipo_pensionado_display(),
+                'novedades': []
+            }
+
+            return JsonResponse(respuesta, safe=False)
+    except:
+        traceback.print_exc()
+        return JsonResponse({"mensaje": "Ocurrió un error actualizando/eliminando el pensionado " + str(id)})
