@@ -1,6 +1,7 @@
 # coding=utf-8
 import json
 import traceback
+from datetime import datetime
 
 from django.contrib.auth import authenticate, login
 from django.contrib.auth.models import User, Group
@@ -9,7 +10,7 @@ from django.http import HttpResponse
 from django.http import JsonResponse
 from django.views.decorators.csrf import csrf_exempt
 
-from .models import OperadorServicio, Aportante, Pensionado
+from .models import OperadorServicio, Aportante, Pensionado, Novedad
 
 
 # Create your views here.
@@ -26,7 +27,6 @@ def pila_login(request):
 
             if usuario is not None:
                 login(request, usuario)
-                print usuario
 
                 return HttpResponse(serializers.serialize("json", [usuario]))
             else:
@@ -205,6 +205,17 @@ def actualizar_eliminar_pensionado(request, id):
             return JsonResponse({"mensaje": "ok"})
         elif request.method == 'GET':
             pensionado = Pensionado.objects.get(pk=id)
+            novedades = Novedad.objects.filter(pensionado_id=pensionado.pk).values('pk', 'fecha_inicio', 'fecha_fin',
+                                                                                   'duracion', 'tipo_novedad')
+
+            for novedad in novedades:
+                n = Novedad.objects.get(pk=novedad['pk'])
+                novedad['fecha_inicio'] = str(n.fecha_inicio)
+                novedad['fecha_fin'] = str(n.fecha_fin)
+                novedad['tipo_novedad_nombre'] = n.get_tipo_novedad_display()
+
+            novedades = json.loads(json.dumps(list(novedades)))
+
             respuesta = {
                 'nombre': pensionado.nombre,
                 'edad': pensionado.edad,
@@ -218,10 +229,93 @@ def actualizar_eliminar_pensionado(request, id):
                 'codigo_CIU': pensionado.codigo_CIU,
                 'tipo_pensionado': pensionado.tipo_pensionado,
                 'tipo_pensionado_nombre': pensionado.get_tipo_pensionado_display(),
-                'novedades': []
+                'novedades': novedades
             }
 
             return JsonResponse(respuesta, safe=False)
     except:
         traceback.print_exc()
         return JsonResponse({"mensaje": "Ocurrió un error actualizando/eliminando el pensionado " + str(id)})
+
+
+@csrf_exempt
+def crear_novedad(request, id_aportante, id_pensionado):
+    try:
+        if request.method == 'POST':
+            data = json.loads(request.body)
+
+            aportante = Aportante.objects.get(pk=id_aportante)
+            pensionado = Pensionado.objects.get(pk=id_pensionado)
+
+            novedad = Novedad()
+            novedad.fecha_inicio = datetime.strptime(data['fechaInicio'], "%d/%m/%Y")
+            novedad.fecha_fin = datetime.strptime(data['fechaFin'], "%d/%m/%Y")
+            novedad.duracion = data['duracion']
+            novedad.tipo_novedad = data['tipo']
+            novedad.aportante = aportante
+            novedad.pensionado = pensionado
+            novedad.save()
+
+            return HttpResponse(serializers.serialize("json", [novedad]))
+    except:
+        traceback.print_exc()
+        return JsonResponse({"mensaje": "Ocurrió un error creando la novedad"})
+
+
+@csrf_exempt
+def actualizar_eliminar_novedad(request, id_aportante, id_pensionado, id):
+    try:
+        if request.method == 'PUT':
+            data = json.loads(request.body)
+
+            novedad = Novedad.objects.get(pk=id)
+
+            if data['fechaInicio']:
+                novedad.fecha_inicio = data['fechaInicio']
+
+            if data['fechaFin']:
+                novedad.fecha_fin = data['fechaFin']
+
+            if data['duracion']:
+                novedad.duracion = data['duracion']
+
+            if data['tipo']:
+                novedad.tipo_novedad = data['tipo']
+
+            novedad.save()
+
+            return HttpResponse(serializers.serialize("json", [novedad]))
+        elif request.method == 'DELETE':
+            novedad = Novedad.objects.get(pk=id)
+
+            novedad.delete()
+
+            return JsonResponse({"mensaje": "ok"})
+    except:
+        traceback.print_exc()
+        return JsonResponse({"mensaje": "Ocurrió un error actualizando/eliminando la novedad"})
+
+
+@csrf_exempt
+def consultar_tipo_usuario(request, id):
+    try:
+        if request.method == 'GET':
+            respuesta = {
+                "id_aportante": "",
+                "id_operador_servicio": ""
+            }
+            usuario = User.objects.get(pk=id)
+            grupos = usuario.groups.all()
+
+            if len(grupos) == 1:
+                if str(grupos[0]).upper() == "APORTANTE":
+                    aportante = Aportante.objects.get(usuario_id=usuario.pk)
+                    respuesta['id_aportante'] = aportante.pk
+                elif str(grupos[0]).upper() == "OPERADOR":
+                    operador_servicio = OperadorServicio.objects.get(pk=usuario.pk)
+                    respuesta['id_operador_servicio'] = operador_servicio.pk
+
+            return JsonResponse(respuesta, safe=False)
+    except:
+        traceback.print_exc()
+        return JsonResponse({"mensaje": "Ocurrió un error consultando el tipo del usuario " + str(id)})
