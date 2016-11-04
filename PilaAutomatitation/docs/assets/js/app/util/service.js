@@ -78,7 +78,7 @@ function DELETE(uri, callbackResponse, callbackError) {
 
 function getToken() {
     var token = {"Content-Type" : "application/json"};
-    var user = localStorage.getItem('user');
+    var user = sessionStorage.getItem('userPayService');
     if (user){
         USER = JSON.parse(user);
         token = {"Content-Type" : "application/json", "Authorization" : 'Token ' + USER.token};

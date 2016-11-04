@@ -2,9 +2,8 @@ var globalParameters = {};
 
 
 function isServiceOperatorAuthenticated() {
-    var user = sessionStorage.getItem('user');
-    if (user) {
-        USER = JSON.parse(user);
+    loadCredentials();
+    if (USER) {
         if (USER.tipo == OPERATOR) {
             $('#labelUsername').html(USER.name + '<small>' + USER.tipo + '</small>');
         }
@@ -15,9 +14,8 @@ function isServiceOperatorAuthenticated() {
 }
 
 function isContributorAuthenticated() {
-    var user = sessionStorage.getItem('user');
-    if (user) {
-        USER = JSON.parse(user);
+    loadCredentials();
+    if (USER) {
         if (USER.tipo == CONTRIBUTOR) {
             $('#labelUsername').html(USER.name + '<small>' + USER.tipo + '</small>');
         }

@@ -100,10 +100,11 @@
 				<section class="style-default-bright">
 					<div class="section-header">
 						<h2 class="text-primary">Actualizar Pensionado</h2>
+						<h3 id="message" class="text-primary"></h3>
 					</div>
 					<div class="section-body">
 
-						<form class="form">
+						<div class="form">
 							<div class="form-group">
 								<input type="text" class="form-control" id="nombre" name="nombre">
 								<label for="nombre">Nombre</label>
@@ -114,90 +115,94 @@
 							</div>
 							<div class="form-group">
 								<input type="number" class="form-control" id="salario" name="salario">
-								<label for="salario">Salario</label>
+								<label for="salario">salario</label>
 							</div>
 							<div class="form-group">
 								<div class="btn-group" data-toggle="buttons">
 									<br/>
 									<label class="btn ink-reaction btn-primary">
-										<input type="radio" name="esAltoRiesgo" id="esAltoRiesgoSi"><i class="fa fa-check-square-o fa-fw"></i> Si
+										<input type="radio" name="esAltoRiesgo" id="esAltoRiesgo1" value="true"><i class="fa fa-check-square-o fa-fw"></i> Si
 									</label>
 									<label class="btn ink-reaction btn-primary active">
-										<input type="radio" name="esAltoRiesgo" id="esAltoRiesgoNo"><i class="fa fa-square-o fa-fw"></i> No
+										<input type="radio" name="esAltoRiesgo" id="esAltoRiesgo2" value="false" checked><i class="fa fa-square-o fa-fw"></i> No
 									</label>
 								</div>
-								<label for="regular1">¿Es alto riesgo?</label>
+								<label for="esAltoRiesgo">¿Es alto riesgo?</label>
 							</div>
 							<div class="form-group">
 								<div class="btn-group" data-toggle="buttons">
 									<br/>
 									<label class="btn ink-reaction btn-primary">
-										<input type="radio" name="esCongresista" id="esCongresistaSi"><i class="fa fa-check-square-o fa-fw"></i> Si
+										<input type="radio" name="esCongresista" id="esCongresista1" value="true"><i class="fa fa-check-square-o fa-fw"></i> Si
 									</label>
 									<label class="btn ink-reaction btn-primary active">
-										<input type="radio" name="esCongresista" id="esCongresistaNo"><i class="fa fa-square-o fa-fw"></i> No
+										<input type="radio" name="esCongresista" id="esCongresista2" value="false" checked><i class="fa fa-square-o fa-fw"></i> No
 									</label>
 								</div>
-								<label for="regular1">¿Es congresista?</label>
+								<label for="esCongresista">¿Es congresista?</label>
 							</div>
 							<div class="form-group">
 								<div class="btn-group" data-toggle="buttons">
 									<br/>
 									<label class="btn ink-reaction btn-primary">
-										<input type="radio" name="esTrabajadorCTI" id="esTrabajadorCTISi"><i class="fa fa-check-square-o fa-fw"></i> Si
+										<input type="radio" name="esTrabajadorCTI" id="esTrabajadorCTI1" value="true"><i class="fa fa-check-square-o fa-fw"></i> Si
 									</label>
 									<label class="btn ink-reaction btn-primary active">
-										<input type="radio" name="esTrabajadorCTI" id="esTrabajadorCTINo"><i class="fa fa-square-o fa-fw"></i> No
+										<input type="radio" name="esTrabajadorCTI" id="esTrabajadorCTI2" value="false" checked><i class="fa fa-square-o fa-fw"></i> No
 									</label>
 								</div>
-								<label for="regular1">¿Es trabajador del CTI?</label>
+								<label for="esTrabajadorCTI">¿Es trabajador del CTI?</label>
 							</div>
 							<div class="form-group">
 								<div class="btn-group" data-toggle="buttons">
 									<br/>
 									<label class="btn ink-reaction btn-primary">
-										<input type="radio" name="esAviador" id="esAviadorSi"><i class="fa fa-check-square-o fa-fw"></i> Si
+										<input type="radio" name="esAviador" id="esAviador1" value="true"><i class="fa fa-check-square-o fa-fw"></i> Si
 									</label>
 									<label class="btn ink-reaction btn-primary active">
-										<input type="radio" name="esAviador" id="esAviadorNo"><i class="fa fa-square-o fa-fw"></i> No
+										<input type="radio" name="esAviador" id="esAviador2" value="false" checked><i class="fa fa-square-o fa-fw"></i> No
 									</label>
 								</div>
-								<label for="regular1">¿Es aviador?</label>
+								<label for="esAviador">¿Es aviador?</label>
 							</div>
 							<div class="form-group">
-								<input type="text" class="form-control" id="residenciaExterior">
-								<label for="regular1">Dirección de residencia en el exterior</label>
+								<input type="text" class="form-control" id="residenciaExterior" name="residenciaExterior">
+								<label for="residenciaExterior">Dirección de residencia en el exterior</label>
 							</div>
 							<div class="form-group">
 								<div class="btn-group" data-toggle="buttons">
 									<br/>
 									<label class="btn ink-reaction btn-primary">
-										<input type="radio" name="tieneGrupoFamiliarColombia" id="tieneGrupoFamiliarColombiaSi"><i class="fa fa-check-square-o fa-fw"></i> Si
+										<input type="radio" name="tieneGrupoFamiliarColombia" id="tieneGrupoFamiliarColombia1" value="true"><i class="fa fa-check-square-o fa-fw"></i> Si
 									</label>
 									<label class="btn ink-reaction btn-primary active">
-										<input type="radio" name="tieneGrupoFamiliarColombia" id="tieneGrupoFamiliarColombiaNo"><i class="fa fa-square-o fa-fw"></i> No
+										<input type="radio" name="tieneGrupoFamiliarColombia" id="tieneGrupoFamiliarColombia2" value="false" checked><i class="fa fa-square-o fa-fw"></i> No
 									</label>
 								</div>
-								<label for="regular1">¿Tiene grupo familiar en Colombia?</label>
+								<label for="tieneGrupoFamiliarColombia">¿Tiene grupo familiar en Colombia?</label>
 							</div>
 							<div class="form-group">
 								<input type="text" class="form-control" id="codigoCIU" name="codigoCIU">
 								<label for="codigoCIU">Código CIU</label>
 							</div>
 							<div class="form-group">
-								<select id="select1" name="tipoPensionado" class="form-control">
-									<option value="30">30</option>
-									<option value="40">40</option>
-									<option value="50">50</option>
-									<option value="60">60</option>
-									<option value="70">70</option>
+								<select id="tipoPensionado" name="tipoPensionado" class="form-control">
+									<option value="1">Pensionado de régimen de prima media. Tope máximo de pensión 25 SMLMV</option>
+									<option value="2">Pensionado de régimen de prima media. Sin tope máximo de pensión</option>
+									<option value="3">Pensionado de régimen de ahorro individual. No aplica tope máximo de pensión</option>
+									<option value="4">Pensionado de riesgos laborales. Tope máximo de 25 SMLMV</option>
+									<option value="5">Pensionado por el empleador, con tope máximo de pensión de 25 SMLVM</option>
+									<option value="6">Pensionado por el empleador sin tope máximo de pensión</option>
+									<option value="7">Pensionado de entidades de los régimenes especial y de excepción, con tope máximo de pensión de 25 SMLMV</option>
+									<option value="8">Pensionado de entidades de los régimenes especial y de excepción, sin tope de pensión</option>
+									<option value="9">Beneficiario UPC adicional</option>
 								</select>
 								<label for="tipoPensionado">Tipo de pensionado</label>
 							</div>
 							<div class="form-group">
-								<button type="submit" class="btn btn-raised btn-default-light ink-reaction">Actualizar</button>
+								<button type="submit" class="btn btn-raised btn-default-light ink-reaction" onclick="actualizarPensionado()">Actualizar</button>
 							</div>
-						</form>
+						</div>
 
 					</div><!--end .section-body -->
 				</section>
@@ -323,14 +328,15 @@
 		<script src="../../assets/js/core/source/AppNavSearch.js"></script>
 		<script src="../../assets/js/core/source/AppVendor.js"></script>
 		<script src="../../assets/js/core/demo/Demo.js"></script>
-		<script src="../../assets/js/core/demo/DemoTableDynamic.js"></script>
+		<script src="../../assets/js/core/demo/PensionadosTableDynamic.js"></script>
 
 		<script src="../../assets/js/app/util/config.js"></script>
-		<script src="../../assets/js/app/util/loader.js"></script>
 		<script src="../../assets/js/app/util/service.js"></script>
 		<script src="../../assets/js/app/util/util.js"></script>
 		<script src="../../assets/js/app/services/index.js"></script>
 		<script src="../../assets/js/app/services/login.js"></script>
+		<script src="../../assets/js/app/services/pensionado.js"></script>
+		<script src="../../assets/js/app/services/actualizar-pensionado.js"></script>
 		<!-- END JAVASCRIPT -->
 
 	</body>

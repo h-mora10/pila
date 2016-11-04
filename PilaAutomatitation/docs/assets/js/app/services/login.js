@@ -12,7 +12,17 @@ function loginPila() {
             $('#errorMessage').html('');
 
             USER = response[0];
-            sessionStorage.setItem('user', JSON.stringify(USER));
+
+            REMEMBER = $('input[name="remember"]:checked');
+            localStorage.setItem('remember', REMEMBER);
+
+            if (REMEMBER && REMEMBER == 'true'){
+                localStorage.setItem('userPayService', JSON.stringify(USER));
+            }
+            else{
+                sessionStorage.setItem('userPayService', JSON.stringify(USER));
+            }
+
 
             if ($.inArray(1, USER.fields.groups) == 0){
                 window.location.href = "html/aportante/consultar-pensionado.html";
@@ -32,14 +42,14 @@ function loginPila() {
 
 function logoutPila() {
     sessionStorage.clear();
+    localStorage.clear();
     USER = undefined;
     window.location.href = "../../index.html";
 }
 
 function verifyUserInIndex(){
-    var user = sessionStorage.getItem('user');
-    if (user){
-        USER = JSON.parse(user);
+    loadCredentials();
+    if (USER){
         if (USER.tipo == OPERATOR){
             window.location.href = "html/operadorServicio/consultar-aportante.html";
         }
@@ -47,4 +57,26 @@ function verifyUserInIndex(){
             window.location.href = "html/aportante/consultar-pensionado.html";
         }
     }
+}
+
+function loadCredentials() {
+    var user = undefined;
+
+    REMEMBER = localStorage.getItem('remember');
+
+    if (REMEMBER && REMEMBER == 'true'){
+        user = localStorage.getItem('userPayService');
+    }
+    else {
+        user = sessionStorage.getItem('userPayService');
+    }
+
+    if (user) {
+        USER = JSON.parse(user);
+    }
+    else {
+        USER = undefined;
+    }
+
+    return USER;
 }
