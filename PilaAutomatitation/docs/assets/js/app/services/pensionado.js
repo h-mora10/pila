@@ -1,6 +1,6 @@
 function crearPensionado() {
     var data = {
-        aportante: USER.pk,
+        aportante: USER.idAportante,
         nombre: $('#nombre').val(),
         edad: $('#edad').val(),
         salario: $('#salario').val(),
@@ -40,7 +40,7 @@ function actualizarPensionado() {
         tipoPensionado: $('#tipoPensionado option:selected').val()
     };
 
-    PUT('/pensionados/' + id, JSON.stringify(data), function (response) {
+    PUT('/pensionados/' + id + '/', JSON.stringify(data), function (response) {
         if (response.mensaje){
             $('#message').html(response.mensaje);
         }
@@ -51,7 +51,7 @@ function actualizarPensionado() {
 }
 
 function eliminarPensionado(id) {
-    DELETE('/pensionados/' + id, function (response) {
+    DELETE('/pensionados/' + id + '/', function (response) {
         if (response.mensaje){
             $('#message').html(response.mensaje);
         }

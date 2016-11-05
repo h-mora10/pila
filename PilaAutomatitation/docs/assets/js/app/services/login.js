@@ -11,31 +11,35 @@ function loginPila() {
         else{
             $('#errorMessage').html('');
 
-            USER = response[0];
+            setCredentials(response[0]);
 
-            REMEMBER = $('input[name="remember"]:checked');
-            localStorage.setItem('remember', REMEMBER);
+            POST('/usuarios/' + USER.pk + '/', undefined, function (response) {
+                if (response){
+                    loadCredentials();
+                    if (response.id_operador_servicio){
+                        USER.idOperadorServicio = response.id_operador_servicio;
+                    }
 
-            if (REMEMBER && REMEMBER == 'true'){
-                localStorage.setItem('userPayService', JSON.stringify(USER));
-            }
-            else{
-                sessionStorage.setItem('userPayService', JSON.stringify(USER));
-            }
+                    if (response.id_aportante){
+                        USER.idAportante = response.id_aportante;
+                    }
 
+                    setCredentials(USER);
 
-            if ($.inArray(1, USER.fields.groups) == 0){
-                window.location.href = "html/aportante/consultar-pensionado.html";
-            }
-            else if ($.inArray(2, USER.fields.groups) == 0){
-                window.location.href = "html/operadorServicio/consultar-aportante.html";
-            }
-            else if ($.inArray(3, USER.fields.groups) == 0){
-                window.location.href = "html/operadorServicio/consultar-aportante.html";
-            }
-            else{
-                window.location.href = "html/aportante/consultar-pensionado.html";
-            }
+                    if ($.inArray(1, USER.fields.groups) == 0){
+                        window.location.href = "html/aportante/consultar-pensionado.html";
+                    }
+                    else if ($.inArray(2, USER.fields.groups) == 0){
+                        window.location.href = "html/operadorServicio/consultar-aportante.html";
+                    }
+                    else if ($.inArray(3, USER.fields.groups) == 0){
+                        window.location.href = "html/operadorServicio/consultar-aportante.html";
+                    }
+                    else{
+                        window.location.href = "html/aportante/consultar-pensionado.html";
+                    }
+                }
+            });
         }
     });
 }
@@ -79,4 +83,17 @@ function loadCredentials() {
     }
 
     return USER;
+}
+
+function setCredentials(user) {
+    USER = user;
+    REMEMBER = $('input[name="remember"]:checked');
+    localStorage.setItem('remember', REMEMBER);
+
+    if (REMEMBER && REMEMBER == 'true'){
+        localStorage.setItem('userPayService', JSON.stringify(user));
+    }
+    else{
+        sessionStorage.setItem('userPayService', JSON.stringify(user));
+    }
 }

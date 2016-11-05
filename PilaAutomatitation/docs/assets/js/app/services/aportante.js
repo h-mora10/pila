@@ -29,7 +29,7 @@ function actualizarAportante() {
         data.password = password;
     }
 
-    PUT('/aportantes/' + id, JSON.stringify(data), function (response) {
+    PUT('/aportantes/' + id + '/', JSON.stringify(data), function (response) {
         if (response.mensaje){
             $('#message').html(response.mensaje);
         }
@@ -40,7 +40,7 @@ function actualizarAportante() {
 }
 
 function eliminarAportante(id) {
-    DELETE('/aportantes/' + id, function (response) {
+    DELETE('/aportantes/' + id + '/', function (response) {
         if (response.mensaje){
             $('#message').html(response.mensaje);
         }
