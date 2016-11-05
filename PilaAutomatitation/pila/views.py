@@ -341,7 +341,7 @@ def actualizar_eliminar_novedad(request, id_aportante, id_pensionado, id):
 @csrf_exempt
 def consultar_tipo_usuario(request, id):
     try:
-        if request.method == 'GET':
+        if request.method == 'POST':
             respuesta = {
                 "id_aportante": "",
                 "id_operador_servicio": ""
