@@ -59,9 +59,13 @@
 	};
 
 	p._createDataTable2 = function() {
+		loadCredentials();
 		var table = $('#datatable2').DataTable({
 			"dom": 'T<"clear">lfrtip',
-			"ajax": $('#datatable2').data('source'),
+			"ajax": {
+				url: URL_HOME + '/aportantes/' + USER.idAportante + '/pensionados',
+				dataSrc: ''
+			},
 			"columns": [
 				{
 					"class": 'details-control',
@@ -69,10 +73,10 @@
 					"data": null,
 					"defaultContent": ''
 				},
-				{"data": "id"},
+				{"data": "pk"},
 				{"data": "nombre"},
 				{"data": "edad"},
-				{"data": "codigoCIU"}
+				{"data": "codigo_CIU"}
 			],
 			"tableTools": {
 				"sSwfPath": $('#datatable2').data('swftools')
@@ -117,7 +121,7 @@
 		var novedades = '<table cellpadding="5" cellspacing="0" border="0" style="padding-left:50px;">' +
 			'<tr>' +
 			'<td></td>' +
-			'<td><a href="#" onclick="acualizar()" style="font-weight: bold; color: #7eb73d;">Crear</a></td>' +
+			'<td><a href="crear-novedad.html?id=' + d.pk + '" style="font-weight: bold; color: #7eb73d;">Crear</a></td>' +
 			'</tr>';
 
 		if (d.novedades){
@@ -128,11 +132,11 @@
 				'</tr>' +
 				'<tr>' +
 				'<td>Fecha inicio:</td>' +
-				'<td>' + d.novedades[i].fechaInicio + '</td>' +
+				'<td>' + d.novedades[i].fecha_inicio + '</td>' +
 				'</tr>' +
 				'<tr>' +
 				'<td>Fecha fin:</td>' +
-				'<td>' + d.novedades[i].fechaFin + '</td>' +
+				'<td>' + d.novedades[i].fecha_fin + '</td>' +
 				'</tr>' +
 				'<tr>' +
 				'<td>Duracion:</td>' +
@@ -144,7 +148,7 @@
 				'</tr>' +
 				'<tr>' +
 				'<td>Acciones:</td>' +
-				'<td><a href="actualizar-novedad.html?id=' + d.novedades[i].id + '" style="font-weight: bold; color: #7eb73d;">Actualizar</a>  <a href="#" onclick="eliminarNovedad(' + d.novedades[i].id + ')" style="font-weight: bold; color: #6c0020;">Eliminar</a></td>' +
+				'<td><a href="actualizar-novedad.html?id=' + d.novedades[i].pk + '" style="font-weight: bold; color: #7eb73d;">Actualizar</a>  <a href="#" onclick="eliminarNovedad(' + d.novedades[i].pk + ')" style="font-weight: bold; color: #6c0020;">Eliminar</a></td>' +
 				'</tr>' +
 				'<tr><td>------------------</td></tr>';
 			}
