@@ -125,7 +125,7 @@ def actualizar_eliminar_aportante(request, id):
 
 
 @csrf_exempt
-def crear_consultar_pensionado(request):
+def crear_pensionado(request):
     try:
         if request.method == 'POST':
             data = json.loads(request.body)
@@ -151,6 +151,48 @@ def crear_consultar_pensionado(request):
     except:
         traceback.print_exc()
         return JsonResponse({"mensaje": "Ocurrió un error creando el pensionado"})
+
+
+@csrf_exempt
+def consultar_pensionados(request, id):
+    try:
+        if request.method == 'GET':
+            respuesta = []
+            pensionados = Pensionado.objects.filter(aportante_id=id)
+
+            for pensionado in pensionados:
+                novedades = Novedad.objects.filter(pensionado_id=pensionado.pk).values('pk', 'fecha_inicio',
+                                                                                       'fecha_fin',
+                                                                                       'duracion', 'tipo_novedad')
+
+                for novedad in novedades:
+                    n = Novedad.objects.get(pk=novedad['pk'])
+                    novedad['fecha_inicio'] = str(n.fecha_inicio)
+                    novedad['fecha_fin'] = str(n.fecha_fin)
+                    novedad['tipo_novedad_nombre'] = n.get_tipo_novedad_display()
+
+                novedades = json.loads(json.dumps(list(novedades)))
+
+                respuesta.append({
+                    'nombre': pensionado.nombre,
+                    'edad': pensionado.edad,
+                    'salario': pensionado.salario,
+                    'es_alto_riesgo': pensionado.es_alto_riesgo,
+                    'es_congresista': pensionado.es_congresista,
+                    'es_trabajador_CTI': pensionado.es_trabajador_CTI,
+                    'es_aviador': pensionado.es_aviador,
+                    'residencia_exterior': pensionado.residencia_exterior,
+                    'tiene_grupo_familiar_colombia': pensionado.tiene_grupo_familiar_colombia,
+                    'codigo_CIU': pensionado.codigo_CIU,
+                    'tipo_pensionado': pensionado.tipo_pensionado,
+                    'tipo_pensionado_nombre': pensionado.get_tipo_pensionado_display(),
+                    'novedades': novedades
+                })
+
+            return JsonResponse(respuesta, safe=False)
+    except:
+        traceback.print_exc()
+        return JsonResponse({"mensaje": "Ocurrió un error consultando los pensionados del aportante " + str(id)})
 
 
 @csrf_exempt
