@@ -174,6 +174,7 @@ def consultar_pensionados(request, id):
                 novedades = json.loads(json.dumps(list(novedades)))
 
                 respuesta.append({
+                    'pk': pensionado.pk,
                     'nombre': pensionado.nombre,
                     'edad': pensionado.edad,
                     'salario': pensionado.salario,
@@ -259,6 +260,7 @@ def actualizar_eliminar_pensionado(request, id):
             novedades = json.loads(json.dumps(list(novedades)))
 
             respuesta = {
+                'pk': pensionado.pk,
                 'nombre': pensionado.nombre,
                 'edad': pensionado.edad,
                 'salario': pensionado.salario,
