@@ -1,0 +1,205 @@
+[33mcommit 029c4972a4750d21f9f7775ead9517b71803f8df[m
+Author: akane <jarvein@hotmail.com>
+Date:   Sat Nov 5 01:15:47 2016 -0500
+
+    Crud novedades frontend
+
+[33mcommit db9b164d9be4beaecaba36071edd1e1b2d93667e[m
+Author: akane <jarvein@hotmail.com>
+Date:   Sat Nov 5 00:26:41 2016 -0500
+
+    CRUD pensionado frontend
+
+[33mcommit ab16dbff2ebc3b10722be600f0983f4d9bfd8e35[m
+Author: juanshbta69 <juan.shbta69@gmail.com>
+Date:   Fri Nov 4 22:22:40 2016 -0500
+
+    Ajustes en lo servicios de pensionados para que la respuesta contenga el id
+
+[33mcommit 315232617b59560100539a19b1b95e35950f3aad[m
+Author: juanshbta69 <juan.shbta69@gmail.com>
+Date:   Fri Nov 4 22:14:09 2016 -0500
+
+    Prueba de login
+
+[33mcommit d9cfc4fb794769dea2807c885df557057e85082a[m
+Author: juanshbta69 <juan.shbta69@gmail.com>
+Date:   Fri Nov 4 22:05:39 2016 -0500
+
+    Creación del servicio de consulta de pensionados por aportante
+
+[33mcommit 60ef6c388231b92c5c7be3e911be48a798cf035b[m
+Author: juanshbta69 <juan.shbta69@gmail.com>
+Date:   Fri Nov 4 16:43:36 2016 -0500
+
+    Construcción de los servicios de creación, actualización, busqueda y eliminación de novedades y adición del servicio para saber si un usuario logueado en el sistema es un operador de servicio o un aportante y ajustes en las url's
+
+[33mcommit aa948a81f08ad2a62a3c19642be3fff44fd93d29[m
+Author: akane <jarvein@hotmail.com>
+Date:   Fri Nov 4 00:51:24 2016 -0500
+
+    CRUD pensionado
+
+[33mcommit 3096954506a2ee85189c8a61083003de5bfa268e[m
+Author: juanshbta69 <juan.shbta69@gmail.com>
+Date:   Wed Nov 2 22:00:50 2016 -0500
+
+    Creación de los servicios de creación, actualización, busqueda y eliminación de pensionados
+
+[33mcommit fe778cca8bc6c4c373e9101f55ea31b792e4db44[m
+Author: akane <jarvein@hotmail.com>
+Date:   Wed Nov 2 01:51:36 2016 -0500
+
+    crud aportante
+
+[33mcommit 002870138062772ea3e776f2012354e708db8d85[m
+Author: juanshbta69 <juan.shbta69@gmail.com>
+Date:   Wed Nov 2 01:44:46 2016 -0500
+
+    Ajuste en el servicio de actualización de un aportante para que la contraseña se almacene encriptada y para que en caso de que algún dato venga vacío no se actualize ni se produzca error
+
+[33mcommit 137eff34b153e6974b76ac109478b6dcdef0a438[m
+Author: juanshbta69 <juan.shbta69@gmail.com>
+Date:   Wed Nov 2 00:35:50 2016 -0500
+
+    Ajuste en el servicio de crear aportante para que cuando se cree el usuario este sea agregado a un grupo y ajuste en la respuesta del servicio de consulta de aportante por id
+
+[33mcommit 8c6142463439d4e2532cf284a0ef191405eb6097[m
+Author: juanshbta69 <juan.shbta69@gmail.com>
+Date:   Tue Nov 1 14:52:40 2016 -0500
+
+    Creación de los servicio de login y de consulta de un aportante por id
+
+[33mcommit 0a61f3761f026f202bf56853652e83cf5622b26d[m
+Merge: 03d736b 3b31008
+Author: juanshbta69 <juan.shbta69@gmail.com>
+Date:   Tue Nov 1 07:30:25 2016 -0500
+
+    Merge remote-tracking branch 'origin/master'
+
+[33mcommit 03d736b3056ddf4d36e1ed3fc717623b0bd598d6[m
+Author: juanshbta69 <juan.shbta69@gmail.com>
+Date:   Tue Nov 1 07:25:25 2016 -0500
+
+    Ajustes en el manejo de excepciones en los servicios y modificación del servicio de consulta de aportantes para que adicional al identificador del tipo de pagador de pensiones también retorne el valor
+
+[33mcommit 3b31008b46154c6c5dbf9973cf9021489405ebe7[m
+Author: akane <jarvein@hotmail.com>
+Date:   Tue Nov 1 01:20:24 2016 -0500
+
+    aportante: query, delete support
+
+[33mcommit 954ddd627385598bda6bc5197db012b719fb81c9[m
+Author: juanshbta69 <juan.shbta69@gmail.com>
+Date:   Tue Nov 1 00:48:50 2016 -0500
+
+    Ajustes en la respuesta del servicio de consulta de aportantes
+
+[33mcommit 2e0e8504360aa7f16eada50889c8584961665fd7[m
+Author: juanshbta69 <juan.shbta69@gmail.com>
+Date:   Tue Nov 1 00:24:32 2016 -0500
+
+    Ajustes en las url's y creación del servicio de consulta de aportantes
+
+[33mcommit ae980c2eb55fc662b45a77693d5c1107b10f976e[m
+Author: akane <jarvein@hotmail.com>
+Date:   Mon Oct 31 23:44:31 2016 -0500
+
+    update gitignore
+
+[33mcommit c8ae982d162f5ed6f4c0548500927bc986858d66[m
+Author: akane <jarvein@hotmail.com>
+Date:   Mon Oct 31 23:40:28 2016 -0500
+
+    CORS support
+
+[33mcommit 3b3c659bc6f1770da873670fd179072e8666e608[m
+Author: juanshbta69 <juan.shbta69@gmail.com>
+Date:   Mon Oct 31 22:54:27 2016 -0500
+
+    Ajustes en los servicios de actualizar y eliminar aportantes
+
+[33mcommit 8cbe949ef0450cd92d797afda4958ad7842a24f9[m
+Author: juanshbta69 <juan.shbta69@gmail.com>
+Date:   Mon Oct 31 21:59:36 2016 -0500
+
+    Manejo de errores en los servicios de creación y actualización de aportantes e implementacuión del servicio para eliminar un aportante
+
+[33mcommit a19c76e10782f98efe2206e4461e2fc8c8115b8d[m
+Author: juanshbta69 <juan.shbta69@gmail.com>
+Date:   Mon Oct 31 20:40:38 2016 -0500
+
+    Ajuste en el servicio para crear un aportante e implementación del servicio para actualizar un aportante
+
+[33mcommit 0e18e2e41dc59d2424ea48c4070832681974cb12[m
+Author: juanshbta69 <juan.shbta69@gmail.com>
+Date:   Mon Oct 31 19:46:53 2016 -0500
+
+    Construcción servicio para crear un aportante
+
+[33mcommit aa565e35dca66b0683e66c5e3e57be59ff77b42e[m
+Merge: 728acca c9b2f3c
+Author: juanshbta69 <juan.shbta69@gmail.com>
+Date:   Sun Oct 30 23:29:32 2016 -0500
+
+    Merge remote-tracking branch 'origin/master'
+
+[33mcommit 728acca2a4946ada8cd53e6deae92038defb281d[m
+Author: juanshbta69 <juan.shbta69@gmail.com>
+Date:   Sun Oct 30 23:29:16 2016 -0500
+
+    Creación de los modelos basicos
+
+[33mcommit c9b2f3cf45dd872cdd6f3e4978029542f92f8a34[m
+Author: akane <jarvein@hotmail.com>
+Date:   Sun Oct 30 23:16:07 2016 -0500
+
+    fix names in inputs elements
+
+[33mcommit 74113a1339a3a35e3df9b644d0708f0fb8051d66[m
+Author: akane <jarvein@hotmail.com>
+Date:   Sun Oct 30 22:51:07 2016 -0500
+
+    delete unnecessary files
+
+[33mcommit 4f12c1768a790c326fb43878cadb0b1238e85ffe[m
+Author: akane <jarvein@hotmail.com>
+Date:   Sun Oct 30 22:45:23 2016 -0500
+
+    fix error in links
+
+[33mcommit 5f2dd6ea49bb9963d6b53871c10424e300c915c4[m
+Author: akane <jarvein@hotmail.com>
+Date:   Sun Oct 30 22:40:40 2016 -0500
+
+    update links
+
+[33mcommit 0d363129525e23c0095eb902ddd0fc2ccec0ae0e[m
+Author: akane <jarvein@hotmail.com>
+Date:   Sun Oct 30 21:00:52 2016 -0500
+
+    login
+
+[33mcommit 7c4def16bcc24db38e6b131386b924bb5a346af2[m
+Author: akane <jarvein@hotmail.com>
+Date:   Sun Oct 30 19:42:14 2016 -0500
+
+    novedades y pensionados
+
+[33mcommit 230de7fa773d69c4ef2eede48e83ce4d1c4d328c[m
+Author: akane <jarvein@hotmail.com>
+Date:   Sun Oct 30 18:13:48 2016 -0500
+
+    create frontend
+
+[33mcommit ba77d8378522e722b32fcf3755c5cb3ba578e05e[m
+Author: akane <jarvein@hotmail.com>
+Date:   Sun Oct 30 10:39:57 2016 -0500
+
+    create requeriments file
+
+[33mcommit 99b15b8ee80bdf6dce31716ea98b21be94763870[m
+Author: akane <jarvein@hotmail.com>
+Date:   Sun Oct 30 10:30:17 2016 -0500
+
+    Create project
