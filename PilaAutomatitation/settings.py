@@ -132,5 +132,4 @@ STATIC_ROOT = os.path.join(PROJECT_ROOT, 'staticfiles')
 STATICFILES_DIRS = (
         #This lets Django's collectstatic store our bundles
         os.path.join(BASE_DIR, 'docs/assets'),
-        os.path.join(PROJECT_ROOT, 'static'),
     )
